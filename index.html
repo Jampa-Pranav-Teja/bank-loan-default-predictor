@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoanGuard AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>LoanGuard AI</h1>
+    <p class="subtitle">Advanced Loan Default Prediction System</p>
+  </header>
+
+  <main class="container">
+    <!-- Left Section -->
+    <section class="form-section">
+      <h2>Loan Application Details</h2>
+      <p class="description">
+        Enter the loan application information to get an AI-powered default risk assessment
+      </p>
+
+      <form class="loan-form">
+        <!-- Personal Information -->
+        <h3>Personal Information</h3>
+        <div class="grid-2">
+          <div>
+            <label>Gender</label>
+            <select><option>Select gender</option></select>
+          </div>
+          <div>
+            <label>Age</label>
+            <input type="number" placeholder="Enter age">
+          </div>
+        </div>
+
+        <!-- Loan Details -->
+        <h3>Loan Details</h3>
+        <div class="grid-2">
+          <div>
+            <label>Loan Type</label>
+            <select><option>Select loan type</option></select>
+          </div>
+          <div>
+            <label>Loan Purpose</label>
+            <select><option>Select purpose</option></select>
+          </div>
+          <div>
+            <label>Loan Amount ($)</label>
+            <input type="number" placeholder="Enter loan amount">
+          </div>
+          <div>
+            <label>Term (months)</label>
+            <input type="number" placeholder="Enter term in months">
+          </div>
+        </div>
+
+        <!-- Financial Information -->
+        <h3>Financial Information</h3>
+        <div class="grid-2">
+          <div>
+            <label>Annual Income ($)</label>
+            <input type="number" placeholder="Enter annual income">
+          </div>
+          <div>
+            <label>Credit Score</label>
+            <input type="number" placeholder="Enter credit score">
+          </div>
+          <div>
+            <label>Credit Worthiness</label>
+            <select><option>Select credit worthiness</option></select>
+          </div>
+          <div>
+            <label>Debt-to-Income Ratio (%)</label>
+            <input type="number" placeholder="Enter DTI ratio">
+          </div>
+        </div>
+
+        <!-- Property Information -->
+        <h3>Property Information</h3>
+        <div class="grid-2">
+          <div>
+            <label>Property Value ($)</label>
+            <input type="number" placeholder="Enter property value">
+          </div>
+          <div>
+            <label>Loan-to-Value Ratio (%)</label>
+            <input type="number" placeholder="Enter LTV ratio">
+          </div>
+          <div>
+            <label>Occupancy Type</label>
+            <select><option>Select occupancy type</option></select>
+          </div>
+          <div>
+            <label>Total Units</label>
+            <input type="number" placeholder="Enter total units">
+          </div>
+        </div>
+
+        <!-- Additional Information -->
+        <h3>Additional Information</h3>
+        <div class="grid-2">
+          <div>
+            <label>Secured By</label>
+            <select><option>Select security type</option></select>
+          </div>
+          <div>
+            <label>Credit Type</label>
+            <select><option>Select credit type</option></select>
+          </div>
+          <div>
+            <label>Co-Applicant Credit Type</label>
+            <select><option>Select co-applicant credit type</option></select>
+          </div>
+          <div>
+            <label>Region</label>
+            <select><option>Select region</option></select>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Predict Default Risk</button>
+      </form>
+    </section>
+
+    <!-- Right Section -->
+    <aside class="info-section">
+      <h2>How It Works</h2>
+      <p>Our AI model analyzes 18 key factors to predict loan default risk:</p>
+      <ul>
+        <li>Personal demographics and credit history</li>
+        <li>Loan characteristics and terms</li>
+        <li>Financial capacity and debt ratios</li>
+        <li>Property and collateral information</li>
+      </ul>
+      <p class="note">
+        This tool provides risk assessment guidance and should be used alongside human judgment for final decisions.
+      </p>
+    </aside>
+  </main>
+
+</body>
+</html>
