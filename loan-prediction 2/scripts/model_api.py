@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import os
 from loan_model import LoanDefaultPredictor  # your model file
 
@@ -17,13 +17,10 @@ except:
     print("No trained model found. Using mock prediction logic.")
 
 
-# Root route
+# Home page – HTML form
 @app.route('/')
 def home():
-    return jsonify({
-        'message': 'Loan Prediction API is running!',
-        'routes': ['/predict (POST)', '/health (GET)']
-    })
+    return render_template('index.html')
 
 
 # Health route
@@ -35,24 +32,38 @@ def health():
     })
 
 
-# Predict route (POST)
+# Predict route (POST from API or form)
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        data = request.json
+        # Determine if request is JSON or form
+        if request.is_json:
+            data = request.get_json()
+        else:
+            data = request.form.to_dict()
+
+        # Convert numeric fields properly
+        for key in ['credit_score', 'dtir1', 'ltv', 'income', 'loan_amount']:
+            if key in data:
+                data[key] = float(data[key])
 
         if MODEL_LOADED:
             result = predictor.predict(data)
         else:
             result = mock_prediction(data)
 
+        # If form submission, render results page
+        if not request.is_json:
+            return render_template('result.html', data=data, result=result)
+        
+        # Else, return JSON
         return jsonify(result)
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 
-# Predict route (GET) – browser-friendly
+# Predict info for GET requests
 @app.route('/predict', methods=['GET'])
 def predict_info():
     return jsonify({
@@ -68,7 +79,7 @@ def predict_info():
     })
 
 
-# Mock prediction logic
+# Mock prediction logic (unchanged)
 def mock_prediction(data):
     risk_score = 0
     risk_factors = []
@@ -113,7 +124,6 @@ def mock_prediction(data):
         risk_score += 10
         risk_factors.append('Fair Credit Worthiness')
 
-    # Determine prediction
     if risk_score <= 20:
         prediction = 'approved'
         confidence = 85 + (15 * (20 - risk_score) / 20)
