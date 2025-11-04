@@ -216,8 +216,8 @@ if __name__ == "__main__":
     # Initialize the predictor
     predictor = LoanDefaultPredictor()
     
-    # Load your dataset here
-    # df = pd.read_csv('your_loan_dataset.csv')
+    df = pd.read_csv('./final-BLDP-DAV/bank-loan-default-predictor/scripts/cleaned_data.csv')
+
     
     # For demonstration, create a sample dataset structure
     print("Loan Default Prediction Model")
